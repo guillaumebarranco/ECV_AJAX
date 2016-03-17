@@ -27,16 +27,19 @@ form {
 
 form .button {
 	width: 150px;
+	padding: 9.5px;
 }
 
 section {
-	height: 550px;
+	height: 650px;
 	width: 800px;
 }
 
 footer ul li {
 	list-style: none;
 	margin-top: 20px;
+	display: inline-block;
+	margin-left: 20px;
 }
 
 footer ul li img {
@@ -55,4 +58,8 @@ footer ul li img {
 .queries li {
 	list-style: none;
 	margin-top: 10px;
+}
+
+footer p {
+	display: none;
 }

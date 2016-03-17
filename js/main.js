@@ -9,8 +9,6 @@ $(document).ready(function() {
 		initQueries(queries);
 	}
 
-	console.log(queries);
-
 	$('form').on('submit', function(e) {
 		e.preventDefault();
 
@@ -53,11 +51,14 @@ $(document).ready(function() {
 
 	function displayResponse(movie) {
 
-		console.log(movie.data);
+		// console.log(movie.data);
 
 		if(typeof movie.data[0] !== 'undefined') {
 
-			movie.data[0].picture = movie.data[0].media_urls.poster.scale_240x320;
+			// movie.data[0].picture = movie.data[0].media_urls.poster.scale_240x320;
+
+			movie.data[0].picture = (typeof movie.data[0].media_urls.poster !== "undefined") ? movie.data[0].media_urls.poster.scale_240x320 : '';
+
 			displayMovie(movie.data[0]);
 
 			displayFooterResponse(movie);
@@ -79,35 +80,52 @@ $(document).ready(function() {
 
 	function pushQuery(movie_datas) {
 		queries.push(movie_datas.picture);
+
+		console.log(queries);
+
+		if(queries.length > 10) {
+			queries = queries.slice(5);
+		}
+
 		sessionStorage.setItem("queries", JSON.stringify(queries));
 
 		var picture = movie_datas.picture;
+
+		if($('.queries li').length > 8) {
+			$('.queries li').last().remove();
+		}
 
 		$('.queries').prepend(`<li><img src="${picture}" width="50"></li>`);
 	}
 
 	function displayFooterResponse(movie) {
 
-		for (var i = 1; i < movie.data.length; i++) {
+		$('footer ul').empty();
 
-			var name = movie.data[i].original_title;
-			var description = movie.data[i].synopsis;
+		for (var i = 1; i < 10; i++) {
 
-			var picture = (typeof movie.data[i].media_urls.poster !== "undefined") ? movie.data[i].media_urls.poster.scale_240x320: '';
-			var id = movie.data[i].id;
+			if(typeof movie.data[i] !== 'undefined') {
 
-			if(typeof name !== 'undefined') {
+				var name = movie.data[i].original_title;
+				var description = movie.data[i].synopsis;
 
-				var li =
-					`<li data-id="${id}">
-						<div class="name">${name}</div>
-						<div class="picture"><img src="${picture}" width="50"></div>
-						<p style="display:none;">${description}</p>
-					</li>`
-				;
+				var picture = (typeof movie.data[i].media_urls.poster !== "undefined") ? movie.data[i].media_urls.poster.scale_240x320: '';
+				var id = movie.data[i].id;
 
-				$('footer ul').append(li);
+				if(typeof name !== 'undefined') {
+
+					var li =
+						`<li data-id="${id}">
+							<div class="name">${name}</div>
+							<div class="picture"><img src="${picture}" width="50"></div>
+							<p>${description}</p>
+						</li>`
+					;
+
+					$('footer ul').append(li);
+				}
 			}
+
 		}
 	}
 
