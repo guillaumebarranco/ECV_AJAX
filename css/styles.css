@@ -1,0 +1,58 @@
+/*body {
+	width: 90%;
+	max-width:1000px;
+	margin: 0 auto;
+}*/
+
+body {
+	padding: 10px;
+}
+
+h1, form {
+	display: inline-block;
+	vertical-align: top;
+}
+
+form input[type=text], form .button {
+	width: 200px;
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+}
+
+form {
+	position: relative;
+    top: 12px;
+}
+
+form .button {
+	width: 150px;
+}
+
+section {
+	height: 550px;
+	width: 800px;
+}
+
+footer ul li {
+	list-style: none;
+	margin-top: 20px;
+}
+
+footer ul li img {
+	cursor: pointer;
+}
+
+.left {
+	float: left;
+	width: 90%;
+}
+
+.right {
+	float: right;
+}
+
+.queries li {
+	list-style: none;
+	margin-top: 10px;
+}
