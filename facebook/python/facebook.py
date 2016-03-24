@@ -1,5 +1,9 @@
 import facebook
 
+# pip install virtualenv
+# pip install requests
+# git clone https://github.com/pythonforfacebook/facebook-sdk.git
+
 CONST_MSG = "Hello Word from Python page !!"
 CONST_CFG = {
     "page_id"      : "1732502050359300",  # Step 1
