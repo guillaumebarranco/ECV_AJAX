@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+
+<html lang="fr">
+	<head>
+		<title>Facebook Connection</title>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+
+	<body>
+
+		<header>
+			<h1>Facebook Connection</h1>
+		</header>
+
+		<div>
+			<button class="fb_connect">Facebook Connect</button>
+		</div>
+
+		<section></section>
+
+		<form action="" method="post">
+			<input type="text">
+			<button>Valider</button>
+		</form>
+
+		<script>
+
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '861108427234120',
+		      xfbml      : true,
+		      version    : 'v2.1'
+		    });
+		  };
+
+		  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "//connect.facebook.net/en_US/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
+
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
